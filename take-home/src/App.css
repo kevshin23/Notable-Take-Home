@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #b7bfcf;
+  background-color: #d2e1f8;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,15 +36,18 @@
   }
 }
 
+.title {
+  margin-bottom: 2rem;
+}
+
 .split-view {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .table, th, td {
-  border: 1px solid white;
+  border: 1px solid black;
 }
-
 td {
   padding-left: .5rem;
   padding-right: .5rem;
@@ -60,5 +63,24 @@ h1 {
 
 .physician:hover {
   cursor: pointer;
-  color: paleturquoise;
+  color: rgb(109, 255, 255);
+  background-color: rgb(77, 124, 255);
+}
+
+.physician:active {
+  background-color: rgb(149, 149, 224);
+}
+
+.physicianList {
+  min-width: 400px;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.appList {
+  min-width: 1000px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 1rem;
 }

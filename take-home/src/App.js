@@ -4,6 +4,8 @@ import PhysiciansList from "./PhysiciansList";
 import Appointments from "./Appointments";
 
 function App() {
+	const moment = require("moment");
+
 	const [physicians, setPhysicians] = useState([]);
 	const [currPhysician, setCurrPhysician] = useState();
 	const [appointments, setAppointments] = useState([]);
@@ -53,8 +55,11 @@ function App() {
 		}
 	}
 
-	function formatTime(time) {
-		let newTime = time.substring(0, 10);
+	const formatTime = (time) => {
+		let newTime = moment();
+		newTime = moment(time).format(
+			"MM/DD/YYYY"
+		);
 		console.log(newTime)
 		return newTime;
 	}
@@ -64,15 +69,18 @@ function App() {
 			<tr key={index} className="appointment">
 				<td>{index + 1}</td>
 				<td>{app.lastName}, {app.firstName}</td>
-				<td>{() => formatTime(app.time)}</td>
+				<td>{formatTime(app.time)}</td>
 				<td>{app.kind}</td>
 			</tr>
 		));
 		
 		return (
 			<div>
+				<h2>Appointments</h2>
 				<h1>Dr. {currPhysician.firstName}, {currPhysician.lastName}</h1>
-				<span className="email">{currPhysician.email}</span>
+				<div className="email">
+					<span>{currPhysician.email}</span>
+				</div>
 				<table className="table">
 					<th>#</th>
 					<th>Name</th>
@@ -94,11 +102,10 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<h1>Hello this is takehome</h1>
+				<h1 className="title">Physician Schedules</h1>
 				<div className="split-view">
-					<div>{renderPhysicians()}</div>
-					<div>
-						<h2>Appointments</h2>
+					<div className="physicianList">{renderPhysicians()}</div>
+					<div className="appList">
 						{appointments && currPhysician ? renderAppointments() : null}
 					</div>
 					{/* <PhysiciansList></PhysiciansList> */}
