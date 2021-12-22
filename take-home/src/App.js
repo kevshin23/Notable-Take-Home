@@ -55,10 +55,11 @@ function App() {
 		}
 	}
 
+	//formatter not working
 	const formatTime = (time) => {
 		let newTime = moment();
-		newTime = moment(time).format(
-			"MM/DD/YYYY"
+		newTime = moment(time, 'ddd DD-MMM-YYYY').format(
+			"hh:mm A"
 		);
 		console.log(newTime)
 		return newTime;
@@ -77,7 +78,7 @@ function App() {
 		return (
 			<div>
 				<h2>Appointments</h2>
-				<h1>Dr. {currPhysician.firstName}, {currPhysician.lastName}</h1>
+				<h1>Dr. {currPhysician.firstName} {currPhysician.lastName}</h1>
 				<div className="email">
 					<span>{currPhysician.email}</span>
 				</div>
